@@ -27,10 +27,10 @@ public class UI_GameScene : UI_Scene
 
     private void Update()
     {
-        UpdateCurrentFPS();
+        RefreshCurrentFPSText();
     }
 
-    void UpdateCurrentFPS()
+    void RefreshCurrentFPSText()
     {
         _elapsedTime += Time.deltaTime;
 
