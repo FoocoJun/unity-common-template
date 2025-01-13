@@ -12,6 +12,7 @@ public class GameScene : BaseScene
         SceneType = Define.EScene.GameScene;
         
         // 이하 씬이 시작 할 때 원하는 셋팅
+        UI_GameScene sceneUI = Managers.UI.ShowSceneUI<UI_GameScene>();
 
         return true;
     }
