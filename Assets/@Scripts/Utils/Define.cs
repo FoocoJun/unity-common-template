@@ -8,5 +8,14 @@ public static class Define
     {
         Unknown,
         TitleScene,
+        GameScene,
+    }
+    
+    public enum EUIEvent
+    {
+        Click,
+        PointerDown,
+        PointerUp,
+        Drag,
     }
 }
