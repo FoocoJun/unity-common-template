@@ -1,4 +1,4 @@
-## unity-common-template
+## unity-common-template v2
 프로젝트 딸 때 마다 만들기 귀찮아서 만든 탬플릿.
 
 인게임 로직을 제외하고 필요한 것만 넣어놨습니다.
@@ -34,5 +34,25 @@ Other Packages
     - PoolManager : 오브젝트 풀링
     - ResourcesManager : Addressable을 활용한 리소스 관리
     - SceneManagerEx : enum 관리 및 씬 전환시 로직 추가를 위한 기존 SceneManager 프록시
-    - UIManager : 씬 UI, 그 외 UI 관리 (팝업 관리 미구현)
+    - UIManager : 씬 UI, 팝업UI 그 외 UI 관리
+    - GameManager : 게임 메인 로직 및 저장 / 로드 관리
     - Managers : 위 모든 Manager 인스턴스 관리
+
+---
+
+## 패치노트
+### 25.1.22. v2 업데이트
+- create : GameManager w/ Save and Load
+- update : UIManager can manage Popup UIs
+
+### 25.1.13. v1
+- 씬 전환 예제 (TitleScene : Addressable Load -> GameScene)
+- csv 파싱 및 예시 (`Tools > ParseExcel : @Resources/Data/ExcelData -> @Resources/Data/JsonData`)
+- 고질병 UI 바인딩을 해결하기 위한 UI_Base 및 UI_EventHandler
+- 각종 Manager
+  - DataManager : JSON 데이터 호출 및 Dictionary로 저장 관리
+  - PoolManager : 오브젝트 풀링
+  - ResourcesManager : Addressable을 활용한 리소스 관리
+  - SceneManagerEx : enum 관리 및 씬 전환시 로직 추가를 위한 기존 SceneManager 프록시
+  - UIManager : 씬 UI, 그 외 UI 관리 (팝업 관리 미구현)
+  - Managers : 위 모든 Manager 인스턴스 관리
