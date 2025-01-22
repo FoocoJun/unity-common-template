@@ -55,6 +55,11 @@ public class UI_TitleScene : UI_Scene
                 Managers.Data.Init();
                 
                 // 세이브 데이터 불러오기 등
+                if (Managers.Game.LoadGame() == false)
+                {
+                    Managers.Game.InitGame();
+                    Managers.Game.SaveGame();
+                }
 
                 GetObject((int)GameObjects.StartImage).gameObject.SetActive(true);
                 GetText((int)Texts.DisplayText).text = "Touch To Start";

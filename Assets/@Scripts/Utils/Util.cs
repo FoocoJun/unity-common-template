@@ -65,4 +65,22 @@ public static class Util
 
 		return parsedColor;
 	}
+	
+	public static string Encrypt(string data)
+	{
+		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(data));
+	}
+
+	public static string Decrypt(string encryptedData)
+	{
+		try
+		{
+			return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encryptedData));
+		}
+		catch (FormatException)
+		{
+			Debug.LogError("Invalid encrypted data format.");
+			return null;
+		}
+	}
 }
