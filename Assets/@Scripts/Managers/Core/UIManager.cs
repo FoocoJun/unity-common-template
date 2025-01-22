@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class UIManager
 {
 	private int _order = 10;
+	
+	private Dictionary<string, UI_Popup> _popups = new Dictionary<string, UI_Popup>();
+	private Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
 
 	private UI_Scene _sceneUI = null;
 	public UI_Scene SceneUI
@@ -116,6 +119,80 @@ public class UIManager
 
 		return sceneUI;
 	}
+	
+	#region Popup
+	public void CachePopupUI(Type type)
+	{
+		string name = type.Name;
+
+		if (_popups.TryGetValue(name, out UI_Popup popup) == false)
+		{
+			GameObject go = Managers.Resource.Instantiate(name);
+			popup = go.GetComponent<UI_Popup>();
+			_popups[name] = popup;
+		}
+
+		_popupStack.Push(popup);
+	}
+
+	public T ShowPopupUI<T>(string name = null) where T : UI_Popup
+	{
+		if (string.IsNullOrEmpty(name))
+			name = typeof(T).Name;
+
+		if (_popups.TryGetValue(name, out UI_Popup popup) == false)
+		{
+			GameObject go = Managers.Resource.Instantiate(name);
+			popup = Util.GetOrAddComponent<T>(go);
+			_popups[name] = popup;
+		}
+
+		_popupStack.Push(popup);
+
+		popup.transform.SetParent(Root.transform);
+		popup.gameObject.SetActive(true);
+
+		return popup as T;
+	}
+
+	public void ClosePopupUI(UI_Popup popup)
+	{
+		if (_popupStack.Count == 0)
+			return;
+
+		if (_popupStack.Peek() != popup)
+		{
+			Debug.Log("Close Popup Failed!");
+			return;
+		}
+
+		ClosePopupUI();
+	}
+
+	public void ClosePopupUI()
+	{
+		if (_popupStack.Count == 0)
+			return;
+
+		UI_Popup popup = _popupStack.Pop();
+
+		popup.gameObject.SetActive(false);
+		//Managers.Resource.Destroy(popup.gameObject);
+
+		_order--;
+	}
+
+	public void CloseAllPopupUI()
+	{
+		while (_popupStack.Count > 0)
+			ClosePopupUI();
+	}
+
+	public int GetPopupCount()
+	{
+		return _popupStack.Count;
+	}
+	#endregion
 
 	public void Clear()
 	{
