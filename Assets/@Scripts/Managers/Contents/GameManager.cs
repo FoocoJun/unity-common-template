@@ -48,7 +48,7 @@ public class GameManager
         }
         
         // Save TODO: 비화 어떻게 하지? 1.0.0 이후 고민하기
-		string jsonStr = JsonUtility.ToJson(SaveData);
+        string jsonStr = JsonUtility.ToJson(SaveData);
         string encryptedStr = Util.Encrypt(jsonStr);
         File.WriteAllText(Path, encryptedStr);
         
