@@ -30,7 +30,7 @@ public class DevScene : BaseScene
     {
         yield return new WaitForSeconds(2);
 
-        IAPManager.Instance.Purchase("rookiss_s2_noads", () =>
+        IAPManager.Instance.Purchase("your_product_id_here", () =>
         {
             Debug.Log("Purchase Completed!");
         });
