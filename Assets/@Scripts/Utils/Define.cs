@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Define
@@ -7,15 +5,44 @@ public static class Define
     public enum EScene
     {
         Unknown,
-        TitleScene,
-        GameScene,
+        LoadingScene,
+        DevScene,
     }
-    
-    public enum EUIEvent
+
+    public enum EEventType
     {
-        Click,
-        PointerDown,
-        PointerUp,
-        Drag,
+        None,
+        GoldChanged,
+        LanguageChanged,
+    }
+
+    public enum ELanguage
+    {
+        KOR,
+        ENG,
+    }
+
+    public enum EObjectType
+    {
+        None,
+        Creature,
+        Projectile,
+        Env
+    }
+
+    public enum ECreatureType
+    {
+        None,
+        Player,
+        Monster,
+        Npc
+    }
+
+    public enum ESound
+    {
+        Bgm,
+        Effect,
+
+        Max,
     }
 }

@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Scene : UI_Base
 {
-    public override bool Init()
+    protected override void Awake()
     {
-        if (base.Init() == false)
-            return false;
+        base.Awake();
 
-        Managers.UI.SetCanvas(gameObject, false);
-        return true;
     }
 }

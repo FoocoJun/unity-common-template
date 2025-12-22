@@ -1,28 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using static Define;
+﻿using UnityEngine;
 
-public abstract class BaseScene : InitBase
+public class BaseScene : MonoBehaviour
 {
-    public EScene SceneType { get; protected set; } = EScene.Unknown;
+    public Define.EScene SceneType { get; protected set; } = Define.EScene.Unknown;
 
-    public override bool Init()
+    protected virtual void Awake()
     {
-        if (base.Init() == false)
-            return false;
-
-        Object obj = FindObjectOfType(typeof(EventSystem));
-        if (obj == null)
-        {
-            GameObject go = new GameObject() { name = "@EventSystem" };
-            go.AddComponent<EventSystem>();
-            go.AddComponent<StandaloneInputModule>();
-        }
-
-        return true;
+        // TODO
     }
-
-    public abstract void Clear();
 }

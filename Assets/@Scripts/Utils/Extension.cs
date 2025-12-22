@@ -1,21 +1,22 @@
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public static class Extension
 {
     public static T GetOrAddComponent<T>(this GameObject go) where T : Component
     {
-        return Util.GetOrAddComponent<T>(go);
+        return Utils.GetOrAddComponent<T>(go);
     }
-    
-    public static void BindEvent(this GameObject go, Action<PointerEventData> action = null, Define.EUIEvent type = Define.EUIEvent.Click)
+
+    public static void DestroyChildren(this GameObject go)
     {
-        UI_Base.BindEvent(go, action, type);
+        go.transform.DestroyChildren();
     }
-    
-    public static bool IsValid(this GameObject go)
+
+    public static void DestroyChildren(this Transform transform)
     {
-        return go != null && go.activeSelf;
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }

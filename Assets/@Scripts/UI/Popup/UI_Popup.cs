@@ -1,20 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Canvas))]
+[RequireComponent(typeof(CanvasScaler))]
 public class UI_Popup : UI_Base
 {
-    public override bool Init()
+    protected override void Awake()
     {
-        if (base.Init() == false)
-            return false;
+        base.Awake();
 
-        Managers.UI.SetCanvas(gameObject, true);
-        return true;
-    }
-
-    public virtual void ClosePopupUI()
-    {
-        Managers.UI.ClosePopupUI(this);
     }
 }
